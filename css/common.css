@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/* RESET */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, address, cite, code, del, dfn, em, font, img, ins, kbd, q, samp, small, strong,
+sub, sup, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, header, nav, article, aside, footer, hgroup, section, figure {
+	margin:  0;
+	padding: 0;
+	border:  0;
+	outline: 0;
+	background : transparent;
+	font-weight: inherit;
+	font-style:  inherit;
+	font-size:   100%;
+	font-family: inherit;
+	text-decoration: none;
+}
+body          { font-size: 13px; line-height : 1.5; }
+ul, ol        { list-style: none; }
+img	          { border: 0; vertical-align: middle; }
+table         { border-collapse : separate; border-spacing: 0; }
+input,select  { vertical-align: middle; }
+textarea      { margin: 0; }
+blockquote, q { quotes: none; }
+blockquote:before,
+blockquote:after,
+q:before,
+q:after       { content: ''; content: none; }
+
+::-moz-selection { background: #00758c; color: #fff; text-shadow: none; }
+::selection      { background: #00758c; color: #fff; text-shadow: none; }
+
+/* clearfix */
+.cf:after {
+	content: "";
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+.cf { min-height: 1px; _height: 1px; }
+
+/* HTML5 */
+/* article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure,
+footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video
+{ display: block; } */
+

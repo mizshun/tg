@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="ja"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="ja"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="ja"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="ja"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>HTML5テンプレートジェネレーター</title>
+<meta name="description" content="HTML5のテンプレートを簡単に作成できます">
+<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom-theme/jquery-ui-1.8.22.custom.css">
+<script src="js/modernizr.js"></script>
+<!--[if lt IE 9 ]> <script src="js/respond.min.js"></script> <![endif]-->
+</head>
+<body>
+<header id="g-header">
+	<hgroup>
+		<h1 class="hide-text lg-l">HTML5テンプレートジェネレーター</h1>
+		<h2>HTML5のテンプレートを生成できます。JavaScriptを使用している環境でご利用ください。</h2>
+	</hgroup>
+<!-- g-header --></header>
+
+<div id="g-container">
+	<form action="get" id="generate-form">
+		<div id="selection-area-1" class="bg-grad-wh">
+			<section class="buttonset">
+				<h2 class="hide-text h-language" title="文書の言語コード(lang属性)を指定します。[必須]">Language Code</h2>
+				<input type="radio" name="lang" value="ja" id="ja" checked><label for="ja">日本語</label>
+				<input type="radio" name="lang" value="en" id="en"><label for="en">英語</label>
+			</section>
+
+			<section class="buttonset">
+				<h2 class="hide-text h-charset" title="文書の文字コード(charset属性)を指定します。[必須]">Charset</h2>
+				<input type="radio" name="charset" value="utf-8" id="utf-8" checked><label for="utf-8">UTF-8</label>
+				<input type="radio" name="charset" value="Shift_JIS" id="Shift_JIS"><label for="Shift_JIS">シフトJIS</label>
+			</section>
+
+			<section class="buttonset">
+				<h2 class="hide-text h-indent" title="コードの行はじめのインデント方法を指定します。[省略可]">Indent</h2>
+				<input type="radio" name="indent" value="none" id="none" checked><label for="none">インデントなし</label>
+				<input type="radio" name="indent" value="tab" id="tab"><label for="tab">タブ１つ</label>
+				<input type="radio" name="indent" value="space2" id="space2"><label for="space2">スペース2つ</label>
+				<input type="radio" name="indent" value="space4" id="space4"><label for="space4">スペース4つ</label>
+			</section>
+		<!-- selection-area-1 --></div>
+
+		<div id="selection-area-2" class="bg-grad-wh">
+			<section class="buttonset">
+				<h2 class="hide-text h-viewport" title="モバイル端末表示時の挙動を調整するviewport属性を指定します。[省略可]">Viewport</h2>
+				<input type="checkbox" name="viewport" value="width=device-width" data-viewport="width=device-width" id="width"><label for="width">width=device-width</label>
+				<input type="checkbox" name="viewport" value="initial-scale=1" data-viewport="initial-scale=1" id="initial-scale"><label for="initial-scale">initial-scale=1</label>
+				<input type="checkbox" name="viewport" value="user-scalable=no" data-viewport="user-scalable=no" id="user-scalable"><label for="user-scalable">user-scalable=no</label>
+				<input type="checkbox" name="viewport" value="maximum-scale=1" data-viewport="maximum-scale=1" id="maximum-scale"><label for="maximum-scale">maximum-scale=1</label>
+			</section>
+
+			<section class="buttonset">
+				<h2 class="hide-text h-file" title="ファイルを読み込むための内部のリンクをつくります[省略可]">Link File</h2>
+				<input type="checkbox" name="linkstyle" value="linkstyle" id="linkstyle"><label for="linkstyle">スタイルシート</label>
+				<input type="checkbox" name="linkjs" value="linkjs" id="linkjs"><label for="linkjs">JavaScript</label>
+			</section>
+
+			<section class="buttonset">
+				<h2 class="hide-text h-cdn" title="外部から各種ライブラリーを読み込みます[省略可]">Link CDN</h2>
+				<input type="checkbox" name="CDNjQuery" value="CDNjQuery" id="CDNjQuery" ><label for="CDNjQuery">jQuery</label>
+				<input type="checkbox" name="CDNjQueryUI" value="CDNjQueryUI" id="CDNjQueryUI" ><label for="CDNjQueryUI">jQueryUI</label>
+				<input type="checkbox" name="CDNmodernizr" value="CDNmodernizr" id="CDNmodernizr"><label for="CDNmodernizr">modernizr</label>
+			</section>
+
+			<section class="buttonset">
+				<h2 class="hide-text h-inline" title="HTML文書の中に直接コードを書く場所をつくります[省略可]">Inline Code</h2>
+				<input type="checkbox" name="inlinestyle" value="inlinestyle" id="inlinestyle" ><label for="inlinestyle">スタイルシート</label>
+				<input type="checkbox" name="inlinejs" value="inlinejs" id="inlinejs" ><label for="inlinejs">JavaScript</label>
+			</section>
+		<!-- selection-area-2 --></div>
+
+		<div id="control-area" class="bg-grad-wh cf">
+			<section id="control-area-left" class="cf">
+				<h2 title="設定項目に従った操作を行います">Control</h2>
+				<button type="submit" id="btn-generate">コードを生成</button><!--
+				--><button type="reset"  id="btn-reset">初期値に戻す</button>
+			<!-- control-area-left --></section>
+
+			<section id="control-area-right" class="cf">
+				<h2 class="hide-text h-config" title="設定項目に関するデータ管理を行います">Config Data</h2>
+				<button type="button" id="btn-save">セーブ</button><!--
+				--><button type="button" id="btn-load">ロード</button><!--
+				--><button type="button" id="btn-delete">削除</button>
+			<!-- control-area-right --></section>
+		<!-- control-area --></div>
+
+		<section id="result-container">
+			<header id="result-container-header" class="cf">
+				<h2 class="hide-text h-result" title="設定項目に従った結果コードを表示します">Result Code</h2>
+				<button type="button" id="btn-selection">コードを全選択する</button>
+			</header>
+
+			<textarea name="result-html-code" id="result-html-code" cols="130" rows="24" readonly></textarea>
+		<!-- result-container --></section>
+	<!-- generate-form --></form>
+<!-- g-container --></div>
+
+<div id="dialog"></div>
+
+<footer id="g-footer">
+	<p><small>Copyright &copy; <script>document.write(new Date().getFullYear());</script> mizzz All Rights Reserved.</small></p>
+<!-- g-footer --></footer>
+
+<aside id="link-portfolio">
+	<p id="speech-bubble">
+		<span>ポートフォリオはじめました！</span>
+	</p>
+	<a href="http://mizzz.heteml.jp/questme/" target="_blank" id="linkicon"><img src="img/icon_questme.png" alt="Quest Me"></a>
+<!-- link-portfolio --></aside>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='js/jquery-1.7.2.min.js'>\x3C/script>")</script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.22/jquery-ui.min.js"></script>
+<script>window.jQuery.ui || document.write("<script src='js/jquery-ui-1.8.22.custom.min.js'>\x3C/script>")</script>
+<script src="js/templategenerator.js"></script>
+</body>
+</html>
