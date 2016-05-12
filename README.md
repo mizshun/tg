@@ -1,5 +1,5 @@
-# template-generator
+# HTML5 Template Generator
 
 HTML5のテンプレート生成ツールです。以下のサイトからも利用できます。
 
-[HTML5テンプレートジェネレーター](http://mizzz.work/tg/)
+[HTML5 Template Generator](http://mizzz.work/tg/)
